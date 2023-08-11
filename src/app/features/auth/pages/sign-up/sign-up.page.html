@@ -1,0 +1,76 @@
+<form [formGroup]="form" (submit)="validateForm()">
+    <mat-form-field
+        appearance="outline"
+        class="form-control"
+        [hideRequiredMarker]="true"
+    >
+        <mat-label>Nombre</mat-label>
+        <input matInput type="text" formControlName="name" />
+        <mat-error>{{getErrorMessage(form.controls['name'])}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+        appearance="outline"
+        class="form-control"
+        [hideRequiredMarker]="true"
+    >
+        <mat-label>Fecha de nacimiento</mat-label>
+        <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="birthdate"
+            (click)="picker.open()"
+        />
+        <mat-error>{{getErrorMessage(form.controls['birthdate'])}}</mat-error>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field
+        appearance="outline"
+        class="form-control"
+        [hideRequiredMarker]="true"
+    >
+        <mat-label>Teléfono</mat-label>
+        <input matInput type="tel" formControlName="phoneNumber" />
+        <mat-error>{{getErrorMessage(form.controls['phoneNumber'])}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+        appearance="outline"
+        class="form-control"
+        [hideRequiredMarker]="true"
+    >
+        <mat-label>Correo</mat-label>
+        <input matInput type="email" formControlName="email" />
+        <mat-error>{{getErrorMessage(form.controls['email'])}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+        appearance="outline"
+        class="form-control"
+        [hideRequiredMarker]="true"
+    >
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="password" />
+        <mat-error>{{getErrorMessage(form.controls['password'])}}</mat-error>
+    </mat-form-field>
+
+    <button
+        type="submit"
+        class="full-width"
+        mat-flat-button
+        color="primary"
+        [disabled]="isLoading"
+    >
+        <mat-spinner
+            class="button-spinner"
+            *ngIf="isLoading; else buttonLabel"
+        ></mat-spinner>
+    </button>
+</form>
+
+<ng-template #buttonLabel>REGISTRAR</ng-template>
+
+<div class="mt-32">
+    <a routerLink="/auth/sign-in">¿Ya tienes una cuenta?</a>
+</div>
