@@ -1,17 +1,47 @@
-<form>
-    <mat-form-field appearance="outline" class="form-control">
+<form [formGroup]="form" (submit)="validateForm()">
+    <mat-form-field
+        appearance="outline"
+        class="form-control"
+        [hideRequiredMarker]="true"
+    >
         <mat-label>Correo</mat-label>
-        <input matInput type="text" />
+        <input matInput type="email" formControlName="email" />
+        <mat-error>{{getErrorMessage(form.controls['email'])}}</mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="form-control">
+    <mat-form-field
+        appearance="outline"
+        class="form-control"
+        [hideRequiredMarker]="true"
+    >
         <mat-label>Contraseña</mat-label>
-        <input matInput type="text" />
+        <input matInput [type]="passwordType" formControlName="password" />
+        <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="togglePasswordVisibility()"
+        >
+            <mat-icon>{{passwordIcon}}</mat-icon>
+        </button>
+        <mat-error>{{getErrorMessage(form.controls['password'])}}</mat-error>
     </mat-form-field>
-    <button type="submit" class="full-width" mat-flat-button color="primary">
-        INGRESAR
+
+    <button
+        type="submit"
+        class="full-width"
+        mat-flat-button
+        color="primary"
+        [disabled]="isLoading"
+    >
+        <mat-spinner
+            class="button-spinner"
+            *ngIf="isLoading; else buttonLabel"
+        ></mat-spinner>
     </button>
 </form>
+
+<ng-template #buttonLabel>INGRESAR</ng-template>
 
 <div class="mt-32">
     <a routerLink="/auth/sign-up">¿Aún no tienes una cuenta?</a>

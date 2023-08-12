@@ -8,10 +8,11 @@ import { environment } from '@env/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthLayout } from './layouts/auth/auth.layout';
 import { RouterModule } from '@angular/router';
+import { HomeLayout } from './layouts/home/home.layout';
 
 @NgModule({
-    declarations: [AuthLayout],
-    exports: [AuthLayout],
+    declarations: [AuthLayout, HomeLayout],
+    exports: [AuthLayout, HomeLayout],
     imports: [
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAuthModule,

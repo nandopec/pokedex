@@ -51,7 +51,15 @@
         [hideRequiredMarker]="true"
     >
         <mat-label>Contraseña</mat-label>
-        <input matInput type="password" formControlName="password" />
+        <input matInput [type]="passwordType" formControlName="password" />
+        <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="togglePasswordVisibility()"
+        >
+            <mat-icon>{{passwordIcon}}</mat-icon>
+        </button>
         <mat-error>{{getErrorMessage(form.controls['password'])}}</mat-error>
     </mat-form-field>
 

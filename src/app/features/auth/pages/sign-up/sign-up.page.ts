@@ -14,6 +14,7 @@ import { UserService } from '@user/services/user.service';
     styles: [],
 })
 export class SignUpPage extends InputValidator {
+    canShowPassword = false;
     form = this._buildForm();
     isLoading = false;
 
@@ -27,10 +28,22 @@ export class SignUpPage extends InputValidator {
         super();
     }
 
+    get passwordType(): string {
+        return this.canShowPassword ? 'text' : 'password';
+    }
+
+    get passwordIcon(): string {
+        return this.canShowPassword ? 'visibility_off' : 'visibility';
+    }
+
+    togglePasswordVisibility(): void {
+        this.canShowPassword = !this.canShowPassword;
+    }
+
     validateForm(): void {
         if (this.form.valid) {
             this.isLoading = true;
-            this._signup();
+            this._signUp();
         }
     }
 
@@ -108,13 +121,13 @@ export class SignUpPage extends InputValidator {
         });
     }
 
-    private _signup(): void {
+    private _signUp(): void {
         const requestBody = {
             email: this.form.value.email,
             password: this.form.value.password,
         };
         this._authService
-            .signup(requestBody)
+            .signUp(requestBody)
             .then((userCredential) => {
                 this._saveUser(userCredential.user!.uid);
             })

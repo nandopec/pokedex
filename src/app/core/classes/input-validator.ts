@@ -35,8 +35,17 @@ export abstract class InputValidator {
                     case typeof error['email'] !== 'undefined':
                         message = 'Por favor ingresa un correo válido.';
                         break;
+
                     case typeof error['emailExists'] !== 'undefined':
                         message = 'El correo ya existe en otra cuenta.';
+                        break;
+
+                    case typeof error['emailNoExists'] !== 'undefined':
+                        message = 'Correo no encontrado.';
+                        break;
+
+                    case typeof error['invalidPassword'] !== 'undefined':
+                        message = 'Contraseña incorrecta.';
                         break;
 
                     default:
