@@ -5,7 +5,12 @@
         [hideRequiredMarker]="true"
     >
         <mat-label>Nombre</mat-label>
-        <input matInput type="text" formControlName="name" />
+        <input
+            id="pkd-signun-name"
+            type="text"
+            matInput
+            formControlName="name"
+        />
         <mat-error>{{getErrorMessage(form.controls['name'])}}</mat-error>
     </mat-form-field>
 
@@ -16,6 +21,8 @@
     >
         <mat-label>Fecha de nacimiento</mat-label>
         <input
+            id="pkd-signun-birthdate"
+            type="text"
             matInput
             [matDatepicker]="picker"
             formControlName="birthdate"
@@ -31,7 +38,12 @@
         [hideRequiredMarker]="true"
     >
         <mat-label>Teléfono</mat-label>
-        <input matInput type="tel" formControlName="phoneNumber" />
+        <input
+            id="pkd-signun-phone-number"
+            type="tel"
+            matInput
+            formControlName="phoneNumber"
+        />
         <mat-error>{{getErrorMessage(form.controls['phoneNumber'])}}</mat-error>
     </mat-form-field>
 
@@ -41,7 +53,12 @@
         [hideRequiredMarker]="true"
     >
         <mat-label>Correo</mat-label>
-        <input matInput type="email" formControlName="email" />
+        <input
+            id="pkd-signun-email"
+            type="email"
+            matInput
+            formControlName="email"
+        />
         <mat-error>{{getErrorMessage(form.controls['email'])}}</mat-error>
     </mat-form-field>
 
@@ -51,7 +68,12 @@
         [hideRequiredMarker]="true"
     >
         <mat-label>Contraseña</mat-label>
-        <input matInput [type]="passwordType" formControlName="password" />
+        <input
+            id="pkd-signun-password"
+            [type]="passwordType"
+            matInput
+            formControlName="password"
+        />
         <button
             type="button"
             mat-icon-button

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
 import { InputValidator } from '@core/classes/input-validator';
 import { FormatterHelper } from '@core/helpers/formatter.helper';
 import { ValidatorsHelper } from '@core/helpers/validators.helper';
+import { NotificationService } from '@core/services/notification.service';
 import { UserService } from '@user/services/user.service';
 
 @Component({
@@ -21,8 +21,8 @@ export class SignUpPage extends InputValidator {
     constructor(
         private _authService: AuthService,
         private _formBuilder: FormBuilder,
+        private _notificationService: NotificationService,
         private _router: Router,
-        private _snackBar: MatSnackBar,
         private _userService: UserService
     ) {
         super();
@@ -89,7 +89,7 @@ export class SignUpPage extends InputValidator {
                 break;
 
             default:
-                this._showNotification('Error al crear cuenta');
+                this._notificationService.show('Error al crear cuenta');
         }
     }
 
@@ -111,13 +111,6 @@ export class SignUpPage extends InputValidator {
     private _sendVerificationEmail(): void {
         this._authService.sendVerificationEmail().then(() => {
             this._goToVerifyEmailAddress();
-        });
-    }
-
-    private _showNotification(message: string): void {
-        this._snackBar.open(message, 'Cerrar', {
-            horizontalPosition: 'end',
-            verticalPosition: 'bottom',
         });
     }
 

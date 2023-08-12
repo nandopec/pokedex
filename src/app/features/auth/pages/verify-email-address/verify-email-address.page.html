@@ -1,32 +1,25 @@
-<div class="center-horizontal center-vertical">
-    <div class="text-center">
-        <h2 class="mb-16">Gracias por registrarte</h2>
-        <div class="mb-32">
-            <p>
-                Hemos enviado un correo de confirmación a
-                <strong>{{firebaseUser?.email}}</strong>
-            </p>
-            <p>
-                Por favor revisa tu correo y haz clic en el enlace para
-                verificarlo.
-            </p>
-        </div>
-        <button
-            type="button"
-            mat-flat-button
-            color="primary"
-            (click)="sendVerificationEmail()"
-        >
-            <mat-spinner
-                class="button-spinner"
-                *ngIf="isLoading; else buttonLabel"
-            ></mat-spinner>
-        </button>
+<h2 class="mb-16">Gracias por registrarte</h2>
+<div class="mb-32">
+    <p>
+        Hemos enviado un correo de confirmación a
+        <strong>{{firebaseUser?.email}}</strong>
+    </p>
+    <p>Por favor revisa tu correo y haz clic en el enlace para verificarlo.</p>
+</div>
+<button
+    type="button"
+    mat-flat-button
+    color="primary"
+    (click)="sendVerificationEmail()"
+>
+    <mat-spinner
+        class="button-spinner"
+        *ngIf="isLoading; else buttonLabel"
+    ></mat-spinner>
+</button>
 
-        <div class="mt-32">
-            <a routerLink="/auth/sign-in">Iniciar sesión</a>
-        </div>
-    </div>
+<div class="mt-32">
+    <a routerLink="/auth/sign-in">Iniciar sesión</a>
 </div>
 
 <ng-template #buttonLabel>REENVIAR CORREO</ng-template>

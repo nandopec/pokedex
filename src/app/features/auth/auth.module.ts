@@ -6,7 +6,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 
 import { AuthRoutingModule } from './auth-routing.module';
@@ -28,7 +27,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         MatInputModule,
         MatNativeDateModule,
         MatProgressSpinnerModule,
-        MatSnackBarModule,
         ReactiveFormsModule,
     ],
     providers: [{ provide: MAT_DATE_LOCALE, useValue: 'es' }],

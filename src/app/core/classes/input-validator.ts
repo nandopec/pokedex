@@ -48,6 +48,10 @@ export abstract class InputValidator {
                         message = 'Contraseña incorrecta.';
                         break;
 
+                    case typeof error['unverifiedEmail'] !== 'undefined':
+                        message = 'Correo no verificado.';
+                        break;
+
                     default:
                         message = '';
                 }

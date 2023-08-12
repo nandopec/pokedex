@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserCredential } from '@firebase/auth-types';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
 import { InputValidator } from '@core/classes/input-validator';
+import { NotificationService } from '@core/services/notification.service';
 
 @Component({
     selector: 'pkd-sign-in',
@@ -18,8 +19,8 @@ export class SignInPage extends InputValidator {
     constructor(
         private _authService: AuthService,
         private _formBuilder: FormBuilder,
-        private _router: Router,
-        private _snackBar: MatSnackBar
+        private _notificationService: NotificationService,
+        private _router: Router
     ) {
         super();
     }
@@ -54,9 +55,17 @@ export class SignInPage extends InputValidator {
         this._router.navigateByUrl('/home/pokemons');
     }
 
+    private _handleSigninSuccess(userCredential: UserCredential): void {
+        if (userCredential.user?.emailVerified) {
+            this._goToPokemonList();
+        } else {
+            const error = { code: 'pkd/auth/unverified-email' };
+            this._handleSigninError(error);
+        }
+    }
+
     private _handleSigninError(error: any): void {
         this.isLoading = false;
-        console.log(error.code);
 
         switch (error.code) {
             case 'auth/user-not-found':
@@ -71,26 +80,25 @@ export class SignInPage extends InputValidator {
                 });
                 break;
 
+            case 'pkd/auth/unverified-email':
+                this.form.controls['email'].setErrors({
+                    unverifiedEmail: true,
+                });
+                break;
+
             default:
-                this._showNotification('Error al iniciar sesión');
+                this._notificationService.show('Error al iniciar sesión');
         }
     }
 
     private _signIn(): void {
         this._authService
             .signIn(this.form.value)
-            .then(() => {
-                this._goToPokemonList();
+            .then((userCredential) => {
+                this._handleSigninSuccess(userCredential);
             })
             .catch((error) => {
                 this._handleSigninError(error);
             });
-    }
-
-    private _showNotification(message: string): void {
-        this._snackBar.open(message, 'Cerrar', {
-            horizontalPosition: 'end',
-            verticalPosition: 'bottom',
-        });
     }
 }

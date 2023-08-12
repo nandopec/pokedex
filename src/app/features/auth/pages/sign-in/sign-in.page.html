@@ -5,7 +5,12 @@
         [hideRequiredMarker]="true"
     >
         <mat-label>Correo</mat-label>
-        <input matInput type="email" formControlName="email" />
+        <input
+            id="pkd-signin-email"
+            type="email"
+            matInput
+            formControlName="email"
+        />
         <mat-error>{{getErrorMessage(form.controls['email'])}}</mat-error>
     </mat-form-field>
 
@@ -15,7 +20,12 @@
         [hideRequiredMarker]="true"
     >
         <mat-label>Contraseña</mat-label>
-        <input matInput [type]="passwordType" formControlName="password" />
+        <input
+            id="pkd-signin-password"
+            [type]="passwordType"
+            matInput
+            formControlName="password"
+        />
         <button
             type="button"
             mat-icon-button

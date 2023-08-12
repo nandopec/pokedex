@@ -7,8 +7,9 @@
             "@env/*": ["src/environments/*"],
             "@core/*": ["src/app/core/*"],
             "@auth/*": ["src/app/features/auth/*"],
-            "@user/*": ["src/app/features/user/*"],
-            "@pokemon/*": ["src/app/features/pokemon/*"]
+            "@error/*": ["src/app/features/error/*"],
+            "@pokemon/*": ["src/app/features/pokemon/*"],
+            "@user/*": ["src/app/features/user/*"]
         },
         "outDir": "./dist/out-tsc",
         "forceConsistentCasingInFileNames": true,
