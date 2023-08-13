@@ -6,6 +6,7 @@
         "paths": {
             "@env/*": ["src/environments/*"],
             "@core/*": ["src/app/core/*"],
+            "@exercise/*": ["src/app/features/exercise/*"],
             "@auth/*": ["src/app/features/auth/*"],
             "@error/*": ["src/app/features/error/*"],
             "@pokemon/*": ["src/app/features/pokemon/*"],

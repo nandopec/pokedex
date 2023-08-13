@@ -1,0 +1,18 @@
+.sidebar {
+    width: 100%;
+    max-width: 280px;
+
+    .sidebar-list {
+        padding: 0;
+
+        .sidebar-item {
+            text-decoration: none;
+        }
+
+        .sidebar-item-active {
+            mat-list-item {
+                background-color: rgba(103, 58, 183, 0.15);
+            }
+        }
+    }
+}

@@ -34,6 +34,13 @@ const routes: Routes = [
                         (mod) => mod.PokemonModule
                     ),
             },
+            {
+                path: 'exercises',
+                loadChildren: () =>
+                    import('@exercise/exercise.module').then(
+                        (mod) => mod.ExerciseModule
+                    ),
+            },
         ],
     },
     {

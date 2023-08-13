@@ -1,0 +1,24 @@
+<mat-drawer #drawer class="sidebar" mode="side">
+    <mat-nav-list class="sidebar-list">
+        <a
+            routerLink="/home/pokemons"
+            [routerLinkActive]="['sidebar-item-active']"
+            class="sidebar-item"
+        >
+            <mat-list-item (click)="closeSidebar()">
+                <span matListItemTitle>Pokemons</span>
+            </mat-list-item>
+        </a>
+        <mat-divider></mat-divider>
+        <a
+            routerLink="/home/exercises/ordering"
+            [routerLinkActive]="['sidebar-item-active']"
+            class="sidebar-item"
+        >
+            <mat-list-item (click)="closeSidebar()">
+                <span matListItemTitle>Ejercicios</span>
+            </mat-list-item>
+        </a>
+        <mat-divider></mat-divider>
+    </mat-nav-list>
+</mat-drawer>
