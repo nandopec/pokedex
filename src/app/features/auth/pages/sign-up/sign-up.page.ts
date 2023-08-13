@@ -102,6 +102,7 @@ export class SignUpPage extends InputValidator {
             ),
             phoneNumber: this.form.value.phoneNumber,
             email: this.form.value.email,
+            avatarUrl: '',
         };
         this._userService.createUser(requestBody).then(() => {
             this._sendVerificationEmail();

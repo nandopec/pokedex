@@ -1,0 +1,10 @@
+<a [routerLink]="[]" [matMenuTriggerFor]="menu" class="p-8 center-vertical">
+    <img [src]="avatarUrl" class="avatar" alt="avatar" />
+</a>
+<mat-menu #menu="matMenu">
+    <p class="name text-center">{{ userName }}</p>
+    <mat-divider></mat-divider>
+    <button class="menu-item" mat-menu-item (click)="logout()">
+        Cerrar sesión
+    </button>
+</mat-menu>

@@ -20,7 +20,7 @@ const routes: Routes = [
     {
         path: 'home',
         component: HomeLayout,
-        canActivate: [authenticatedGuard],
+        //canActivate: [authenticatedGuard],
         children: [
             {
                 path: '',

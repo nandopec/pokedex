@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth/services/auth.service';
-import { User } from '@user/interfaces/user.interface';
 import { User as FirebaseUser } from '@firebase/auth-types';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { NotificationService } from '@core/services/notification.service';
 
 @Component({
@@ -12,7 +9,7 @@ import { NotificationService } from '@core/services/notification.service';
     styles: [],
 })
 export class VerifyEmailAddressPage {
-    firebaseUser: FirebaseUser | null = this._authService.firebaseUser;
+    firebaseUser: FirebaseUser | null = this._authService.currentUser;
     isLoading = false;
 
     constructor(

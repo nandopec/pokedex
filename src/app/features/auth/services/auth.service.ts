@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { getAuth, User as FirebaseUser } from '@angular/fire/auth';
 import { ActionDataSignin } from '@auth/interfaces/action-data-signin.interface';
 import { ActionDataSignup } from '@auth/interfaces/action-data-signup.interface';
 import { UserCredential } from '@firebase/auth-types';
-import { User } from '@firebase/auth-types';
+import { User as FirebaseUser } from '@firebase/auth-types';
+import { Router } from '@angular/router';
 
 const FIREBASE_USER_KEY = 'pkd:user-firebase';
 
@@ -12,22 +12,23 @@ const FIREBASE_USER_KEY = 'pkd:user-firebase';
     providedIn: 'root',
 })
 export class AuthService {
-    firebaseUser: User | null = null;
-
-    constructor(private _angularFireAuth: AngularFireAuth) {
-        this._angularFireAuth.authState.subscribe((user: User | null) => {
-            if (user !== null) {
-                this.firebaseUser = user;
-                this._saveFirebaseUserInLS(JSON.stringify(user));
-            } else {
-                this._saveFirebaseUserInLS('null');
+    constructor(
+        private _angularFireAuth: AngularFireAuth,
+        private _router: Router
+    ) {
+        this._angularFireAuth.authState.subscribe(
+            (user: FirebaseUser | null) => {
+                if (user !== null) {
+                    this._saveFirebaseUserInLS(JSON.stringify(user));
+                } else {
+                    this._saveFirebaseUserInLS('null');
+                }
             }
-        });
+        );
     }
 
     get currentUser(): FirebaseUser | null {
-        const auth = getAuth();
-        return auth.currentUser;
+        return this._getFirebaseUserInLS();
     }
 
     get isLoggedIn(): boolean {
@@ -36,21 +37,26 @@ export class AuthService {
     }
 
     sendVerificationEmail(): Promise<void> {
-        return this._angularFireAuth.currentUser.then((user: User | null) => {
-            if (user !== null) user.sendEmailVerification();
-        });
+        return this._angularFireAuth.currentUser.then(
+            (user: FirebaseUser | null) => {
+                if (user !== null) user.sendEmailVerification();
+            }
+        );
     }
 
     signIn(requestBody: ActionDataSignin): Promise<UserCredential> {
-        return this._angularFireAuth.signInWithEmailAndPassword(
-            requestBody.email,
-            requestBody.password
-        );
+        return this._angularFireAuth
+            .signInWithEmailAndPassword(requestBody.email, requestBody.password)
+            .then((user) => {
+                this._saveFirebaseUserInLS(JSON.stringify(user.user));
+                return user;
+            });
     }
 
     signOut(): Promise<void> {
         return this._angularFireAuth.signOut().then(() => {
             this._removeFirebaseUserInLS();
+            this._goToSignIn();
         });
     }
 
@@ -63,6 +69,10 @@ export class AuthService {
 
     private _getFirebaseUserInLS(): FirebaseUser | null {
         return JSON.parse(localStorage.getItem(FIREBASE_USER_KEY)!);
+    }
+
+    private _goToSignIn(): void {
+        this._router.navigateByUrl('/auth/sign-in');
     }
 
     private _removeFirebaseUserInLS(): void {

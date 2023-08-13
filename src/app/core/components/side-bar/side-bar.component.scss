@@ -12,6 +12,10 @@
         .sidebar-item-active {
             mat-list-item {
                 background-color: rgba(103, 58, 183, 0.15);
+
+                span {
+                    color: #673ab7;
+                }
             }
         }
     }

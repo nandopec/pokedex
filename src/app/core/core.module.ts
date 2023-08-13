@@ -7,6 +7,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -18,6 +19,7 @@ import { HomeLayout } from './layouts/home/home.layout';
 import { BlankLayout } from './layouts/blank/blank.layout';
 import { HeaderComponent } from './components/header/header.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { UserMenuComponent } from './components/user-menu/user-menu.component';
 
 @NgModule({
     declarations: [
@@ -26,6 +28,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
         HomeLayout,
         HeaderComponent,
         SideBarComponent,
+        UserMenuComponent,
     ],
     exports: [AuthLayout, BlankLayout, HomeLayout],
     imports: [
@@ -37,6 +40,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
         MatButtonModule,
         MatIconModule,
         MatListModule,
+        MatMenuModule,
         MatSidenavModule,
         MatSnackBarModule,
         MatToolbarModule,
