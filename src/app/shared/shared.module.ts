@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 // Angular Material
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,6 +19,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 // Forms
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// Http Client
+import { HttpClientModule } from '@angular/common/http';
+
 // Firebase
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
@@ -32,7 +36,9 @@ import { RouterModule } from '@angular/router';
         AngularFireDatabaseModule,
         CommonModule,
         FormsModule,
+        HttpClientModule,
         MatButtonModule,
+        MatCardModule,
         MatDatepickerModule,
         MatFormFieldModule,
         MatIconModule,

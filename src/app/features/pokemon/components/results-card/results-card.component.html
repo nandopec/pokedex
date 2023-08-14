@@ -1,0 +1,21 @@
+<mat-card class="p-24">
+    <div class="results-label mb-16">
+        <ng-container *ngIf="totalItemsLoaded > 0; else notFoundLabel">
+            Mostrando <strong>{{ totalItemsLoaded }}</strong> de
+            <strong>{{ totalItems }}</strong> Pokemons.
+        </ng-container>
+    </div>
+    <button
+        mat-raised-button
+        color="primary"
+        [disabled]="isLoading"
+        (click)="requestLoadMore()"
+    >
+        <mat-spinner
+            class="button-spinner"
+            *ngIf="isLoading; else buttonLabel"
+        ></mat-spinner>
+    </button>
+</mat-card>
+<ng-template #notFoundLabel> Pokemon no encntrado.</ng-template>
+<ng-template #buttonLabel>CARGAR MÁS</ng-template>

@@ -1,24 +1,26 @@
 <mat-drawer #drawer class="sidebar" mode="side">
-    <mat-nav-list class="sidebar-list">
-        <a
+    <mat-nav-list class="list">
+        <mat-list-item
+            class="list-item"
             routerLink="/home/pokemons"
-            [routerLinkActive]="['sidebar-item-active']"
-            class="sidebar-item"
+            [routerLinkActive]="['list-item-active']"
+            (click)="closeSidebar()"
         >
-            <mat-list-item (click)="closeSidebar()">
-                <span matListItemTitle>Pokemons</span>
-            </mat-list-item>
-        </a>
-        <mat-divider></mat-divider>
-        <a
+            <mat-icon matListItemIcon class="item-icon material-icons-outlined"
+                >offline_bolt</mat-icon
+            >
+            <span matListItemTitle>Pokemons</span>
+        </mat-list-item>
+        <mat-list-item
+            class="list-item"
             routerLink="/home/exercises/ordering"
-            [routerLinkActive]="['sidebar-item-active']"
-            class="sidebar-item"
+            [routerLinkActive]="['list-item-active']"
+            (click)="closeSidebar()"
         >
-            <mat-list-item (click)="closeSidebar()">
-                <span matListItemTitle>Ejercicios</span>
-            </mat-list-item>
-        </a>
-        <mat-divider></mat-divider>
+            <mat-icon matListItemIcon class="item-icon material-icons-outlined"
+                >edit_calendar</mat-icon
+            >
+            <span matListItemTitle>Ejercicios</span>
+        </mat-list-item>
     </mat-nav-list>
 </mat-drawer>

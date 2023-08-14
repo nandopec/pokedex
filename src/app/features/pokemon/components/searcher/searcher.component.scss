@@ -1,0 +1,21 @@
+@import "./src/assets/scss/partials/_mixins.scss";
+
+.searcher-container {
+    display: flex;
+    align-items: center;
+
+    .searcher-input {
+        padding: 24px 12px 24px 24px;
+        margin: 0;
+
+        @include mobile {
+            padding: 8px;
+        }
+    }
+
+    .searcher-btn {
+        @include mobile {
+            margin-right: 8px;
+        }
+    }
+}

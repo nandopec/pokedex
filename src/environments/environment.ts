@@ -8,4 +8,7 @@ export const environment = {
         messagingSenderId: '711503819130',
         appId: '1:711503819130:web:18de6f14ac69653eeea6c3',
     },
+    pokemon: {
+        api: 'https://pokeapi.co/api/v2',
+    },
 };

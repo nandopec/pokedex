@@ -13,6 +13,7 @@ import { BlankLayout } from './layouts/blank/blank.layout';
 import { HeaderComponent } from './components/header/header.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { UserMenuComponent } from './components/user-menu/user-menu.component';
         HeaderComponent,
         SideBarComponent,
         UserMenuComponent,
+        NavBarComponent,
     ],
     exports: [AuthLayout, BlankLayout, HomeLayout],
     imports: [

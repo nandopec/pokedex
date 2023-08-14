@@ -1,0 +1,28 @@
+<mat-card>
+    <form
+        class="searcher-container"
+        [formGroup]="form"
+        (submit)="validateForm()"
+    >
+        <mat-form-field
+            appearance="outline"
+            class="form-control searcher-input"
+            [hideRequiredMarker]="true"
+        >
+            <input
+                id="pkd-search"
+                type="search"
+                matInput
+                formControlName="query"
+            />
+        </mat-form-field>
+        <button
+            type="submit"
+            mat-fab
+            color="primary"
+            class="searcher-btn mr-16"
+        >
+            <mat-icon>search</mat-icon>
+        </button>
+    </form>
+</mat-card>

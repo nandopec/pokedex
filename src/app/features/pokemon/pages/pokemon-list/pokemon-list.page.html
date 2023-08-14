@@ -1,1 +1,12 @@
-<div class="search-container"></div>
+<pkd-searcher (searchPokemon)="searchPokemon($event)"></pkd-searcher>
+<div class="row mt-16">
+    <div class="col-card" *ngFor="let pokemon of pokemons">
+        <pkd-pokemon-card [pokemon]="pokemon"></pkd-pokemon-card>
+    </div>
+</div>
+<pkd-results-card
+    [totalItems]="totalItems"
+    [totalItemsLoaded]="pokemons.length"
+    [isLoading]="isLoading"
+    (loadMore)="loadMore()"
+></pkd-results-card>

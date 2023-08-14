@@ -1,9 +1,10 @@
 <pkd-header></pkd-header>
-<div class="page-content">
+<pkd-nav-bar></pkd-nav-bar>
+<div class="main-container">
     <mat-drawer-container class="drawer-container" autosize>
         <pkd-side-bar></pkd-side-bar>
         <div
-            class="home-content"
+            class="page-content home-content"
             [ngClass]="{'active': isSidebarOpen}"
             (click)="closeSidebar()"
         >

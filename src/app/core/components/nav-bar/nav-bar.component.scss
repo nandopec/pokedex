@@ -1,24 +1,31 @@
 @import "./src/assets/scss/partials/_mixins.scss";
 
-.sidebar {
-    width: 100%;
-    max-width: 280px;
+.navbar-container {
+    height: 56px;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px rgba(61, 119, 180, 0.12),
+        0 8px 16px 0 rgba(91, 139, 199, 0.24);
     position: fixed;
-    margin-top: 120px;
-
-    @include tablet {
-        margin-top: 64px;
-    }
+    width: 100%;
+    margin-top: 64px;
 
     @include mobile {
-        margin-top: 56px;
+        display: none;
     }
 
-    .list {
+    .list-horizontal {
         padding: 0;
+        display: flex;
 
         .list-item {
+            height: auto;
+            width: auto;
             padding: 16px 24px;
+            border-left: 1px solid #e0e8f5;
+
+            &:last-child {
+                border-right: 1px solid #e0e8f5;
+            }
 
             &:focus {
                 &::before {
