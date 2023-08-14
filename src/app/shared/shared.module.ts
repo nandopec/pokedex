@@ -29,8 +29,10 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 // Router
 import { RouterModule } from '@angular/router';
 
+import { SearcherComponent } from './components/searcher/searcher.component';
+
 @NgModule({
-    declarations: [],
+    declarations: [SearcherComponent],
     exports: [
         AngularFireAuthModule,
         AngularFireDatabaseModule,
@@ -52,7 +54,16 @@ import { RouterModule } from '@angular/router';
         MatToolbarModule,
         ReactiveFormsModule,
         RouterModule,
+        SearcherComponent,
     ],
-    imports: [CommonModule],
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        ReactiveFormsModule,
+    ],
 })
 export class SharedModule {}

@@ -1,1 +1,9 @@
-<p>ordering works!</p>
+<pkd-searcher iconName="edit" (search)="doExercise($event)"></pkd-searcher>
+
+<div class="container-result">
+    <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let element of result"
+            >{{element.key}} - {{element.value}}</mat-list-item
+        >
+    </mat-list>
+</div>

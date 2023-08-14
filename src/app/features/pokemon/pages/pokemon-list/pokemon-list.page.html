@@ -1,4 +1,4 @@
-<pkd-searcher (searchPokemon)="searchPokemon($event)"></pkd-searcher>
+<pkd-searcher iconName="search" (search)="searchPokemon($event)"></pkd-searcher>
 <div class="row mt-16">
     <div class="col-card" *ngFor="let pokemon of pokemons">
         <pkd-pokemon-card [pokemon]="pokemon"></pkd-pokemon-card>
